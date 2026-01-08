@@ -47,7 +47,7 @@ body {
 
 .terminal-header {
     background-color: #d4b5c7;
-    padding: 0.4rem 1rem;
+    padding: 0.75rem 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -65,12 +65,12 @@ body {
 
 .traffic-lights {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.6rem;
 }
 
 .traffic-light {
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -89,12 +89,12 @@ body {
 
 .terminal-title {
     color: #333;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
 }
 
 .folder-icon {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     margin-right: 0.35rem;
 }
 
@@ -159,7 +159,6 @@ body {
     color: #333;
     margin-bottom: 0.75rem;
     font-weight: 600;
-    text-decoration: underline;
 }
 
 .content-section p {

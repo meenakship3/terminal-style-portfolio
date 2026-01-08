@@ -10,49 +10,75 @@ const directories_data = {
     about: {
         title: 'About Me',
         content: `
-I'm a passionate full-stack developer with a love for creating beautiful, 
-functional web applications. With expertise in modern JavaScript frameworks 
-and backend technologies, I craft solutions that solve real problems.
-
-When I'm not coding, you'll find me exploring new technologies, contributing 
-to open source, or enjoying the great outdoors.
-
-📧 Email: your.email@example.com
-🌐 Website: your-website.com
+I'm a developer who came to tech through curiosity rather than a CS degree, now building production-ready applications with FastAPI, React, PostgreSQL, and Go. My background working across multiple teams at an early-stage startup taught me that great software isn't just about clean code—it's about understanding the humans on the other side. 
+<br>
+<br>Currently seeking backend or full-stack engineering internships and roles where I can ship impactful work and learn from experienced engineers.
         `
     },
     projects: {
         title: 'Projects',
         content: `
-<div class="project-item">
-<div class="title">Portfolio Website</div>
-<div class="desc">A terminal-themed portfolio built with vanilla HTML, CSS, and JavaScript.</div>
-<div class="tech">Tech: HTML5 • CSS3 • JavaScript</div>
-</div>
+<a href="https://github.com/meenakship3/cli-speedtest" style="text-decoration: none;">
+    <div class="project-item">
+    <div class="title">CLI Internet Speed Monitor</div>
+    <div class="desc">Network monitoring tool with configurable thresholds and real-time Slack notifications for connectivity drops.</div>
+    <div class="tech">Tech: Go • Speedtest.net API • Slack Webhooks • CLI Flags</div>
+    </div>
+</a>
 
-<div class="project-item">
-<div class="title">Task Management App</div>
-<div class="desc">Full-stack application for managing projects and tasks with real-time updates.</div>
-<div class="tech">Tech: React • Node.js • MongoDB • Express</div>
-</div>
+<a href="https://github.com/meenakship3/safeskin" style="text-decoration: none;">
+    <div class="project-item">
+    <div class="title">Safeskin</div>
+    <div class="desc">Skincare product safety analyzer with database of 2,000+ products that identifies harmful ingredients in cosmetics.</div>
+    <div class="tech">Tech: FastAPI • PostgreSQL • Selenium • Next.js • React • TypeScript</div>
+    </div>
+</a>
 
-<div class="project-item">
-<div class="title">E-Commerce Platform</div>
-<div class="desc">Modern e-commerce solution with payment processing and inventory management.</div>
-<div class="tech">Tech: Next.js • Stripe • PostgreSQL • Tailwind CSS</div>
-</div>
+<a href="https://github.com/meenakship3/lockbox" style="text-decoration: none;">
+    <div class="project-item">
+    <div class="title">Lockbox</div>
+    <div class="desc">Secure desktop application for managing API keys with AES-256-GCM encryption and biometric authentication.</div>
+    <div class="tech">Tech: Node.js • Electron • SQLite • Jest • GitHub Actions</div>
+    </div>
+</a>
+
+<a href="https://github.com/meenakship3/readme-agent" style="text-decoration: none;">
+    <div class="project-item">
+    <div class="title">README Agent</div>
+    <div class="desc">AI-powered documentation generator that automatically creates comprehensive README files for Python projects using Google Gemini API.</div>
+    <div class="tech">Tech: Python • Google Gemini AI • File Parsing</div>
+    </div>
+</a>
+
+<a href="https://github.com/meenakship3/shell-python" style="text-decoration: none;">
+    <div class="project-item">
+    <div class="title">Python Shell</div>
+    <div class="desc">Unix-like shell interpreter with tab completion, command history, and support for built-in and external commands.</div>
+    <div class="tech">Tech: Python • subprocess • readline • pathlib</div>
+    </div>
+</a>
         `
     },
     skills: {
         title: 'Skills',
         content: `
 <div class="content-section">
+<h3>Languages</h3>
+<div class="skill-tags">
+<span class="skill-tag">Java</span>
+<span class="skill-tag">Python</span>
+<span class="skill-tag">TypeScript/JavaScript</span>
+<span class="skill-tag">Go</span>
+<span class="skill-tag">Bash</span>
+</div>
+</div>
+
+<div class="content-section">
 <h3>Frontend</h3>
 <div class="skill-tags">
-<span class="skill-tag">JavaScript</span>
 <span class="skill-tag">React</span>
-<span class="skill-tag">TypeScript</span>
-<span class="skill-tag">HTML/CSS</span>
+<span class="skill-tag">Next.js</span>
+<span class="skill-tag">HTML5/CSS3</span>
 <span class="skill-tag">Tailwind CSS</span>
 </div>
 </div>
@@ -61,21 +87,31 @@ to open source, or enjoying the great outdoors.
 <h3>Backend</h3>
 <div class="skill-tags">
 <span class="skill-tag">Node.js</span>
-<span class="skill-tag">Express</span>
-<span class="skill-tag">Python</span>
-<span class="skill-tag">PostgreSQL</span>
-<span class="skill-tag">MongoDB</span>
+<span class="skill-tag">Express.js</span>
+<span class="skill-tag">FastAPI</span>
+<span class="skill-tag">REST APIs</span>
 </div>
 </div>
 
 <div class="content-section">
-<h3>Tools & Other</h3>
+<h3>Databases</h3>
 <div class="skill-tags">
-<span class="skill-tag">Git</span>
-<span class="skill-tag">Docker</span>
-<span class="skill-tag">AWS</span>
-<span class="skill-tag">REST APIs</span>
-<span class="skill-tag">Agile</span>
+<span class="skill-tag">PostgreSQL</span>
+<span class="skill-tag">MongoDB</span>
+<span class="skill-tag">SQLite</span>
+<span class="skill-tag">MySQL</span>
+</div>
+</div>
+
+<div class="content-section">
+<h3>DevOps & Tools</h3>
+<div class="skill-tags">
+<span class="skill-tag">Git/GitHub</span>
+<span class="skill-tag">Kubernetes</span>
+<span class="skill-tag">GitHub Actions</span>
+<span class="skill-tag">Selenium</span>
+<span class="skill-tag">Jest</span>
+<span class="skill-tag">Generative AI</span>
 </div>
 </div>
         `
@@ -83,38 +119,26 @@ to open source, or enjoying the great outdoors.
     blog: {
         title: 'Blog',
         content: `
-<div class="blog-item">
-<div class="date">January 15, 2024</div>
-<div class="title">Getting Started with Web Performance</div>
-<div class="desc">A comprehensive guide to optimizing your web applications for speed and efficiency.</div>
-</div>
-
-<div class="blog-item">
-<div class="date">December 28, 2023</div>
-<div class="title">Modern JavaScript: ES2024 Features</div>
-<div class="desc">Exploring the latest JavaScript features and how they improve code quality.</div>
-</div>
-
-<div class="blog-item">
-<div class="date">December 10, 2023</div>
-<div class="title">Building Scalable APIs</div>
-<div class="desc">Best practices for designing and building APIs that scale with your application.</div>
-</div>
+<a href="https://medium.com/ai-in-plain-english/i-think-i-know-how-to-use-cursor-now-48dc7dc96a7a" style="text-decoration: none;">
+    <div class="blog-item">
+    <div class="date">August 5, 2025</div>
+    <div class="title">I Think I Know How to Use Cursor AI Now</div>
+    <div class="desc">5 tips to stay sane (and productive) while using Cursor for AI-powered software development.</div>
+    </div>
+</a>
         `
     },
     contact: {
         title: 'Contact',
         content: `
-Let's connect! You can find me on:
+Let's connect! 
 
-<div class="skill-tags" style="margin-top: 1rem;">
-<a href="https://github.com" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;">GitHub</a>
-<a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;">LinkedIn</a>
+<div class="contact-button" style="margin-top: 1rem;">
+<a href="https://www.linkedin.com/in/meenakshipradeep/" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;">LinkedIn</a>
+<a href="https://github.com/meenakship3" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;">GitHub</a>
+<a href="mailto:meenakshi.pradeep1@gmail.com" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;">Email</a>
 </div>
 
-📧 Email: your.email@example.com
-💼 LinkedIn: linkedin.com/in/yourprofile
-🔗 GitHub: github.com/yourprofile
         `
     }
 };
@@ -132,14 +156,14 @@ function initTerminal() {
         dirHtml += `<span class="dir-name" onclick="changeDir('${dir}')">${dir}</span>`;
     });
     dirHtml += '</div>';
-    dirHtml += `<div class="hint">Type cd &lt;dir name&gt; to explore</div>`
+    dirHtml += `<div class="hint">Type cd &lt;directory&gt; to explore</div>`
     dirLine.innerHTML = dirHtml;
     terminalContent.appendChild(dirLine);
 
     addNewPrompt();
 }
 
-function addNewPrompt() {
+function addNewPrompt(scrollToBottom = true) {
     const inputLine = document.createElement('div');
     inputLine.className = 'terminal-line input-line';
     inputLine.innerHTML = `
@@ -153,8 +177,15 @@ function addNewPrompt() {
     `;
     terminalContent.appendChild(inputLine);
     const input = document.getElementById('commandInput');
-    input.focus();
-    terminalContent.scrollTop = terminalContent.scrollHeight;
+    
+    // Prevent default scroll behavior on focus if we want to control it manually
+    if (scrollToBottom) {
+        input.focus();
+        terminalContent.scrollTop = terminalContent.scrollHeight;
+    } else {
+        input.focus({ preventScroll: true });
+    }
+    
     attachInputListeners(input);
 }
 
@@ -280,14 +311,22 @@ function handleCommand(input) {
         addNewPrompt();
     } else if (lowerCmd === 'cd ..') {
         currentDirectory = null;
-        displayLs();
         addNewPrompt();
     } else if (lowerCmd.startsWith('cd ')) {
         const dirName = lowerCmd.slice(3).trim();
         if (directories.includes(dirName)) {
             currentDirectory = dirName;
-            displayDirectory(dirName);
-            addNewPrompt();
+            const contentElement = displayDirectory(dirName);
+            
+            // Add prompt WITHOUT scrolling to bottom
+            addNewPrompt(false);
+            
+            // Explicitly scroll the content to the top
+            if (contentElement) {
+                setTimeout(() => {
+                    contentElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 10);
+            }
         } else {
             addOutput(`cd: no such file or directory: ${dirName}`);
             addNewPrompt();
@@ -317,7 +356,7 @@ function displayLs() {
         dirHtml += `<span class="dir-name" onclick="changeDir('${dir}')">${dir}</span>`;
     });
     dirHtml += '</div>';
-    dirHtml += `<div class="hint">Type cd &lt;dir name&gt; to explore</div>`;
+    dirHtml += `<div class="hint">Type cd &lt;directory&gt; to explore</div>`;
     dirLine.innerHTML = dirHtml;
     terminalContent.appendChild(dirLine);
     terminalContent.scrollTop = terminalContent.scrollHeight;
@@ -337,7 +376,8 @@ function displayDirectory(dirName) {
     outputDiv.innerHTML = html;
     outputLine.appendChild(outputDiv);
     terminalContent.appendChild(outputLine);
-    terminalContent.scrollTop = terminalContent.scrollHeight;
+    
+    return outputLine;
 }
 
 function addOutput(text) {
