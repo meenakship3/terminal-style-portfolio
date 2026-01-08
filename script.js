@@ -1,6 +1,8 @@
 
 const terminalContent = document.getElementById('terminalContent');
 let currentDirectory = null;
+let commandHistory = [];
+let historyIndex = -1;
 
 const directories = ['about', 'projects', 'skills', 'blog', 'contact'];
 
@@ -117,10 +119,10 @@ Let's connect! You can find me on:
     }
 };
 
-function initTerminal() {
+function initTerminal() { 
     const firstLine = document.createElement('div');
     firstLine.className = 'terminal-line';
-    firstLine.innerHTML = `<span class="prompt">(base) meenu@Meenakshi-MacBook-Pro ~ %</span> <span class="command">ls</span>`;
+    firstLine.innerHTML = `<span class="prompt">(base) meenakshi@portfolio ~ %</span> <span class="command">ls</span>`;
     terminalContent.appendChild(firstLine);
 
     const dirLine = document.createElement('div');
@@ -130,6 +132,7 @@ function initTerminal() {
         dirHtml += `<span class="dir-name" onclick="changeDir('${dir}')">${dir}</span>`;
     });
     dirHtml += '</div>';
+    dirHtml += `<div class="hint">Type cd &lt;dir name&gt; to explore</div>`
     dirLine.innerHTML = dirHtml;
     terminalContent.appendChild(dirLine);
 
@@ -140,7 +143,7 @@ function addNewPrompt() {
     const inputLine = document.createElement('div');
     inputLine.className = 'terminal-line input-line';
     inputLine.innerHTML = `
-        <span class="prompt">(base) meenu@Meenakshi-MacBook-Pro ${currentDirectory ? '~/' + currentDirectory : '~'} %</span>
+        <span class="prompt">(base) meenakshi@portfolio ${currentDirectory ? currentDirectory : '~'} %</span>
         <input 
             type="text" 
             id="commandInput" 
@@ -161,13 +164,26 @@ function attachInputListeners(input) {
             e.preventDefault();
             handleAutocomplete(input);
         }
-        else if (e.ctrlKey && e.key === 'c') {
-            e.preventDefault();
-            input.value = '';
-        }
         else if (e.metaKey && e.key === 'k') {
             e.preventDefault();
             clearTerminal();
+        }
+        else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (historyIndex < commandHistory.length - 1) {
+                historyIndex++;
+                input.value = commandHistory[commandHistory.length - 1 - historyIndex];
+            }
+        }
+        else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (historyIndex > 0) {
+                historyIndex--;
+                input.value = commandHistory[commandHistory.length - 1 - historyIndex];
+            } else {
+                historyIndex = -1;
+                input.value = '';
+            }
         }
     });
 
@@ -181,10 +197,28 @@ function attachInputListeners(input) {
 
 function handleAutocomplete(input) {
     const value = input.value.toLowerCase();
-    const matches = directories.filter(dir => dir.startsWith(value));
+    
+    // Check if the command starts with 'cd ' for directory completion
+    let searchTerm = value;
+    let isCdCommand = false;
+    
+    if (value.startsWith('cd ')) {
+        searchTerm = value.substring(3).trim();
+        isCdCommand = true;
+    } else if (value === 'cd') {
+        // Just 'cd' without space, do nothing or maybe suggest directories if you want
+        return; 
+    }
+
+    // If we have a search term (or it's just 'cd ' with nothing after), look for matches
+    const matches = directories.filter(dir => dir.startsWith(searchTerm));
 
     if (matches.length === 1) {
-        input.value = matches[0];
+        if (isCdCommand) {
+            input.value = `cd ${matches[0]}`;
+        } else {
+            input.value = matches[0];
+        }
     } else if (matches.length > 1) {
         // Show common prefix
         let commonPrefix = matches[0];
@@ -195,39 +229,61 @@ function handleAutocomplete(input) {
             }
             commonPrefix = commonPrefix.substring(0, j);
         }
-        input.value = commonPrefix;
+        if (isCdCommand) {
+             input.value = `cd ${commonPrefix}`;
+        } else {
+             input.value = commonPrefix;
+        }
     }
 }
 
 function handleCommand(input) {
-    const cmd = input.trim().toLowerCase();
+    const cmd = input.trim(); // Keep original case for display, but lower for logic if needed
 
     if (!cmd) {
         addNewPrompt();
         return;
     }
+    
+    // Add to history if it's not the same as the last command
+    if (commandHistory.length === 0 || commandHistory[commandHistory.length - 1] !== cmd) {
+        commandHistory.push(cmd);
+    }
+    historyIndex = -1;
+
+    const lowerCmd = cmd.toLowerCase();
 
     // Add command to display
     const cmdLine = terminalContent.querySelector('.input-line');
     if (cmdLine) {
-        cmdLine.innerHTML = `<span class="prompt">(base) meenu@Meenakshi-MacBook-Pro ${currentDirectory ? '~/' + currentDirectory : '~'} %</span> <span class="command">${input}</span>`;
+        cmdLine.innerHTML = `<span class="prompt">(base) meenakshi@portfolio ${currentDirectory ? currentDirectory : '~'} %</span> <span class="command">${input}</span>`;
         cmdLine.classList.remove('input-line');
     }
 
-    if (cmd === 'ls') {
+    if (lowerCmd === 'ls') {
         displayLs();
-    } else if (cmd === 'clear') {
+        addNewPrompt();
+    } else if (lowerCmd === 'clear') {
         clearTerminal();
-    } else if (cmd === 'cd ~' || cmd === 'cd') {
+    } else if (lowerCmd === 'whoami') {
+        addOutput('visitor');
+        addNewPrompt();
+    } else if (lowerCmd === 'date') {
+        addOutput(new Date().toString());
+        addNewPrompt();
+    } else if (lowerCmd.startsWith('sudo')) {
+        addOutput("Trying to gain root access on someone else's website? That's not nice :(");
+        addNewPrompt();
+    } else if (lowerCmd === 'cd ~' || lowerCmd === 'cd') {
         currentDirectory = null;
         displayLs();
         addNewPrompt();
-    } else if (cmd === 'cd ..') {
+    } else if (lowerCmd === 'cd ..') {
         currentDirectory = null;
         displayLs();
         addNewPrompt();
-    } else if (cmd.startsWith('cd ')) {
-        const dirName = cmd.slice(3).trim();
+    } else if (lowerCmd.startsWith('cd ')) {
+        const dirName = lowerCmd.slice(3).trim();
         if (directories.includes(dirName)) {
             currentDirectory = dirName;
             displayDirectory(dirName);
@@ -236,12 +292,15 @@ function handleCommand(input) {
             addOutput(`cd: no such file or directory: ${dirName}`);
             addNewPrompt();
         }
-    } else if (cmd === 'help') {
+    } else if (lowerCmd === 'help') {
         addOutput(`Available commands:
 ls              - List all directories
 cd <directory>  - Navigate to a directory (cd about, cd projects, etc.)
 cd .. or cd ~   - Go back to home
 clear           - Clear the terminal (or Cmd+K)
+whoami          - Display current user
+date            - Display current date and time
+sudo            - ???
 help            - Show this help message`);
         addNewPrompt();
     } else {
@@ -258,6 +317,7 @@ function displayLs() {
         dirHtml += `<span class="dir-name" onclick="changeDir('${dir}')">${dir}</span>`;
     });
     dirHtml += '</div>';
+    dirHtml += `<div class="hint">Type cd &lt;dir name&gt; to explore</div>`;
     dirLine.innerHTML = dirHtml;
     terminalContent.appendChild(dirLine);
     terminalContent.scrollTop = terminalContent.scrollHeight;
@@ -272,7 +332,7 @@ function displayDirectory(dirName) {
     
     let html = `<div class="content-section"><h3>${dir.title}</h3></div>`;
     html += `<div class="output">${dir.content}</div>`;
-    html += `<div class="hint">Type "cd .." to go back</div>`;
+    html += `<div class="hint">Type "cd ~" to go back</div>`;
     
     outputDiv.innerHTML = html;
     outputLine.appendChild(outputDiv);
@@ -298,6 +358,38 @@ function changeDir(dirName) {
     handleCommand(`cd ${dirName}`);
 }
 
+function updateTerminalDimensions() {
+    const terminalContent = document.getElementById('terminalContent');
+    const dimsSpan = document.getElementById('terminal-dimensions');
+    
+    if (!terminalContent || !dimsSpan) return;
+
+    // Create a temporary span to measure character size
+    const testSpan = document.createElement('span');
+    testSpan.style.visibility = 'hidden';
+    testSpan.style.position = 'absolute';
+    testSpan.style.fontFamily = "'Monaco', 'Courier New', monospace";
+    testSpan.style.fontSize = '0.95rem'; // Same as .terminal-content in CSS
+    testSpan.textContent = 'M';
+    document.body.appendChild(testSpan);
+
+    const charWidth = testSpan.getBoundingClientRect().width;
+    
+    // Calculate line height
+    const styles = window.getComputedStyle(terminalContent);
+    const lineHeight = parseFloat(styles.lineHeight);
+
+    document.body.removeChild(testSpan);
+
+    const cols = Math.floor(terminalContent.clientWidth / charWidth);
+    const rows = Math.floor(terminalContent.clientHeight / lineHeight);
+
+    dimsSpan.textContent = `${cols}x${rows}`;
+}
+
+window.addEventListener('resize', updateTerminalDimensions);
+
 // Initialize on load
 initTerminal();
+updateTerminalDimensions();
 
