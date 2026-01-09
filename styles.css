@@ -294,6 +294,12 @@ body {
     width: 100%;
 }
 
+.desktop-text {
+    font-size: 0.7rem;
+    margin-top: 1rem;
+    color: #333;
+}
+
 /* Scrollbar styling */
 .terminal-content::-webkit-scrollbar {
     width: 8px;
