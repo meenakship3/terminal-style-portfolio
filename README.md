@@ -1,8 +1,8 @@
-# Terminal Portfolio
+# Terminal Style Portfolio
 
 A minimalist, interactive terminal-style portfolio website built with HTML, CSS, and vanilla JavaScript.
 
-[**Check it out:**](https://meenakship3.github.io/terminal-style-portfolio/)
+<p><b>Check it out: </b><a href="https://meenakship3.github.io/terminal-style-portfolio/">https://meenakship3.github.io/terminal-style-portfolio</a></p>
 
 ### Supported Commands
 
