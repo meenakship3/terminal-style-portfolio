@@ -66,11 +66,10 @@ I'm a developer who came to tech through curiosity rather than a CS degree, now 
 <div class="content-section">
 <h3>Languages</h3>
 <div class="skill-tags">
-<span class="skill-tag">Java</span>
 <span class="skill-tag">Python</span>
 <span class="skill-tag">TypeScript/JavaScript</span>
 <span class="skill-tag">Go</span>
-<span class="skill-tag">Bash</span>
+<span class="skill-tag">Java</span>
 </div>
 </div>
 
@@ -109,6 +108,7 @@ I'm a developer who came to tech through curiosity rather than a CS degree, now 
 <div class="skill-tags">
 <span class="skill-tag">Git/GitHub</span>
 <span class="skill-tag">Kubernetes</span>
+<span class="skill-tag">Bash/Shell Scripting</span>
 <span class="skill-tag">GitHub Actions</span>
 <span class="skill-tag">Selenium</span>
 <span class="skill-tag">Jest</span>
