@@ -5,6 +5,7 @@ let commandHistory = [];
 let historyIndex = -1;
 
 const directories = ['about', 'projects', 'skills', 'blog', 'contact'];
+const files = ['resume.pdf'];
 
 const directories_data = {
     about: {
@@ -155,6 +156,10 @@ function initTerminal() {
     directories.forEach(dir => {
         dirHtml += `<span class="dir-name" onclick="changeDir('${dir}')">${dir}</span>`;
     });
+    files.forEach(file => {
+        const filePath = file === 'resume.pdf' ? 'assets/MeenakshiPradeep-Resume.pdf' : file;
+        dirHtml += `<span class="file-name" onclick="window.open('${filePath}', '_blank')">${file}</span>`;
+    });
     dirHtml += '</div>';
     dirHtml += `<div class="hint">Type cd &lt;directory&gt; to explore</div>`
     dirLine.innerHTML = dirHtml;
@@ -229,27 +234,23 @@ function attachInputListeners(input) {
 function handleAutocomplete(input) {
     const value = input.value.toLowerCase();
     
-    // Check if the command starts with 'cd ' for directory completion
+    // Check if the command starts with 'cd ' or 'cat '
     let searchTerm = value;
-    let isCdCommand = false;
+    let prefix = '';
     
     if (value.startsWith('cd ')) {
         searchTerm = value.substring(3).trim();
-        isCdCommand = true;
-    } else if (value === 'cd') {
-        // Just 'cd' without space, do nothing or maybe suggest directories if you want
-        return; 
+        prefix = 'cd ';
+    } else if (value.startsWith('cat ')) {
+        searchTerm = value.substring(4).trim();
+        prefix = 'cat ';
     }
 
-    // If we have a search term (or it's just 'cd ' with nothing after), look for matches
-    const matches = directories.filter(dir => dir.startsWith(searchTerm));
+    const allItems = [...directories, ...files];
+    const matches = allItems.filter(item => item.startsWith(searchTerm));
 
     if (matches.length === 1) {
-        if (isCdCommand) {
-            input.value = `cd ${matches[0]}`;
-        } else {
-            input.value = matches[0];
-        }
+        input.value = `${prefix}${matches[0]}`;
     } else if (matches.length > 1) {
         // Show common prefix
         let commonPrefix = matches[0];
@@ -260,11 +261,7 @@ function handleAutocomplete(input) {
             }
             commonPrefix = commonPrefix.substring(0, j);
         }
-        if (isCdCommand) {
-             input.value = `cd ${commonPrefix}`;
-        } else {
-             input.value = commonPrefix;
-        }
+        input.value = `${prefix}${commonPrefix}`;
     }
 }
 
@@ -294,6 +291,14 @@ function handleCommand(input) {
     if (lowerCmd === 'ls') {
         displayLs();
         addNewPrompt();
+    } else if (lowerCmd === 'resume') {
+        window.open('assets/MeenakshiPradeep-Resume.pdf', '_blank');
+        addOutput('Opening resume.pdf...');
+        addNewPrompt();
+    } else if (lowerCmd === 'cat resume.pdf') {
+        window.open('assets/MeenakshiPradeep-Resume.pdf', '_blank');
+        addOutput('Opening resume.pdf...');
+        addNewPrompt();
     } else if (lowerCmd === 'clear') {
         clearTerminal();
     } else if (lowerCmd === 'whoami') {
@@ -301,6 +306,9 @@ function handleCommand(input) {
         addNewPrompt();
     } else if (lowerCmd === 'date') {
         addOutput(new Date().toString());
+        addNewPrompt();
+    } else if (lowerCmd === 'pwd') {
+        addOutput(currentDirectory ? `/Users/meenakshi/${currentDirectory}` : '/Users/meenakshi');
         addNewPrompt();
     } else if (lowerCmd.startsWith('sudo')) {
         addOutput("Trying to gain root access on someone else's website? That's not nice :(");
@@ -333,13 +341,15 @@ function handleCommand(input) {
         }
     } else if (lowerCmd === 'help') {
         addOutput(`Available commands:
-ls              - List all directories
-cd <directory>  - Navigate to a directory (cd about, cd projects, etc.)
+ls              - List all directories and files
+resume          - Open resume in a new tab
+cat resume.pdf  - View resume file
+cd <directory>  - Navigate to a directory
 cd .. or cd ~   - Go back to home
 clear           - Clear the terminal (or Cmd+K)
 whoami          - Display current user
 date            - Display current date and time
-sudo            - ???
+pwd             - Print working directory
 help            - Show this help message`);
         addNewPrompt();
     } else {
@@ -348,18 +358,30 @@ help            - Show this help message`);
     }
 }
 
-function displayLs() {
+function displayLs(shouldScroll = true) {
     const dirLine = document.createElement('div');
     dirLine.className = 'terminal-line';
     let dirHtml = '<div class="directory-listing">';
+    
+    // Show directories
     directories.forEach(dir => {
         dirHtml += `<span class="dir-name" onclick="changeDir('${dir}')">${dir}</span>`;
     });
+    
+    // Show files
+    files.forEach(file => {
+        const filePath = file === 'resume.pdf' ? 'assets/MeenakshiPradeep-Resume.pdf' : file;
+        dirHtml += `<span class="file-name" onclick="window.open('${filePath}', '_blank')">${file}</span>`;
+    });
+    
     dirHtml += '</div>';
-    dirHtml += `<div class="hint">Type cd &lt;directory&gt; to explore</div>`;
+    dirHtml += `<div class="hint">Type cd &lt;directory&gt; or cat &lt;file&gt; to explore</div>`;
     dirLine.innerHTML = dirHtml;
     terminalContent.appendChild(dirLine);
-    terminalContent.scrollTop = terminalContent.scrollHeight;
+    
+    if (shouldScroll) {
+        terminalContent.scrollTop = terminalContent.scrollHeight;
+    }
 }
 
 function displayDirectory(dirName) {
