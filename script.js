@@ -11,9 +11,11 @@ const directories_data = {
     about: {
         title: 'About Me',
         content: `
-I'm a developer who came to tech through curiosity rather than a CS degree, now building production-ready applications with FastAPI, React, PostgreSQL, and Go. My background working across multiple teams at an early-stage startup taught me that great software isn't just about clean code—it's about understanding the humans on the other side. 
+        My journey in tech has been far from traditional. I began as a liberal arts student with a Bachelor of Arts in Economics, but soon realized my passion lay elsewhere—and here I am.<br>
+<br>Over the past year, I've built projects that focus on solving real problems: <a href="https://github.com/meenakship3/safeskin" style="color: #333; font-size: 0.9rem;">Safeskin</a> to help people make smarter cosmetic choices, <a href="https://github.com/meenakship3/lockbox" style="color: #333; font-size: 0.9rem;">Lockbox</a> to securely store and manage API tokens, 
+and a <a href="https://github.com/meenakship3/cli-speedtest" style="color: #333; font-size: 0.9rem;">CLI Internet Speed Monitor Tool</a> for tracking network performance. These projects have taught me about database indexing, API design, web scraping pipelines, encryption systems, and even picking up an entirely new language (Go).
 <br>
-<br>Currently seeking backend or full-stack engineering internships and roles where I can ship impactful work and learn from experienced engineers.
+<br>I'm currently seeking backend or full-stack engineering internships and roles where I can continue solving problems and learning from experienced engineers.
         `
     },
     projects: {
