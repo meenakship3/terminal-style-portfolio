@@ -12,15 +12,22 @@ const directories_data = {
         title: 'About Me',
         content: `
         My journey in tech has been far from traditional. I began as a liberal arts student with a Bachelor of Arts in Economics, but soon realized my passion lay elsewhere—and here I am.<br>
-<br>Over the past year, I've built projects that focus on solving real problems: <a href="https://github.com/meenakship3/safeskin" style="color: #333; font-size: 0.9rem;">Safeskin</a> to help people make smarter cosmetic choices, <a href="https://github.com/meenakship3/lockbox" style="color: #333; font-size: 0.9rem;">Lockbox</a> to securely store and manage API tokens, 
-and a <a href="https://github.com/meenakship3/cli-speedtest" style="color: #333; font-size: 0.9rem;">CLI Internet Speed Monitor Tool</a> for tracking network performance. These projects have taught me about database indexing, API design, web scraping pipelines, encryption systems, and even picking up an entirely new language (Go).
 <br>
-<br>I'm currently seeking backend or full-stack engineering internships and roles where I can continue solving problems and learning from experienced engineers.
+I just wrapped up building AP Connect with aluplast India — a cross-platform Flutter app that replaced WhatsApp-based sales workflows for their national sales network. As the sole developer, I worked on: SMS OTP auth, role-based dashboards for a three-tier sales hierarchy, a Firebase backend with Firestore security rules, and a data pipeline processing daily reports with 98% reliability.<br>
+<br>
+I'm seeking full-time software engineering roles where I can keep solving hard problems and learn from experienced engineers.
         `
     },
     projects: {
         title: 'Projects',
         content: `
+    <a href="https://github.com/meenakship3/ap-connect" style="text-decoration: none;">
+        <div class="project-item">
+        <div class="title">AP Connect</div>
+        <div class="desc">Cross-platform mobile app for aluplast India's sales and fabricator network.</div>
+        <div class="tech">Tech: Flutter • Firebase • Riverpod • Jira </div>
+        </div>
+    </a>
 <a href="https://github.com/meenakship3/cli-speedtest" style="text-decoration: none;">
     <div class="project-item">
     <div class="title">CLI Internet Speed Monitor</div>
@@ -71,6 +78,7 @@ and a <a href="https://github.com/meenakship3/cli-speedtest" style="color: #333;
 <span class="skill-tag">Python</span>
 <span class="skill-tag">TypeScript/JavaScript</span>
 <span class="skill-tag">Go</span>
+<span class="skill-tag">Dart</span>
 <span class="skill-tag">Java</span>
 </div>
 </div>
@@ -79,6 +87,7 @@ and a <a href="https://github.com/meenakship3/cli-speedtest" style="color: #333;
 <h3>Frontend</h3>
 <div class="skill-tags">
 <span class="skill-tag">React</span>
+<span class="skill-tag">Flutter</span>
 <span class="skill-tag">Next.js</span>
 <span class="skill-tag">HTML5/CSS3</span>
 <span class="skill-tag">Tailwind CSS</span>
@@ -102,6 +111,7 @@ and a <a href="https://github.com/meenakship3/cli-speedtest" style="color: #333;
 <span class="skill-tag">MongoDB</span>
 <span class="skill-tag">SQLite</span>
 <span class="skill-tag">MySQL</span>
+<span class="skill-tag">Firebase</span>
 </div>
 </div>
 
@@ -114,7 +124,7 @@ and a <a href="https://github.com/meenakship3/cli-speedtest" style="color: #333;
 <span class="skill-tag">GitHub Actions</span>
 <span class="skill-tag">Selenium</span>
 <span class="skill-tag">Jest</span>
-<span class="skill-tag">Generative AI</span>
+<span class="skill-tag">Claude Code (AI-assisted coding)</span>
 </div>
 </div>
         `
