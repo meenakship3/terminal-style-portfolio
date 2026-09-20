@@ -13,7 +13,7 @@ const directories_data = {
         content: `
         My journey in tech has been far from traditional. I began as a liberal arts student with a Bachelor of Arts in Economics, but soon realized my passion lay elsewhere—and here I am.<br>
 <br>
-I just wrapped up building AP Connect with aluplast India — a cross-platform Flutter app that replaced WhatsApp-based sales workflows for their national sales network. As the sole developer, I worked on: SMS OTP auth, role-based dashboards for a three-tier sales hierarchy, a Firebase backend with Firestore security rules, and a data pipeline processing daily reports with 98% reliability.<br>
+I'm currently building AP Connect with aluplast India — a cross-platform Flutter app that replaced WhatsApp-based sales workflows for their national sales network. As the sole developer, I worked on: SMS OTP auth, role-based dashboards for a three-tier sales hierarchy, a Firebase backend with Firestore security rules, and a data pipeline processing daily reports with 98% reliability.<br>
 <br>
 I'm seeking full-time software engineering roles where I can keep solving hard problems and learn from experienced engineers.
         `
