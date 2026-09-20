@@ -4,7 +4,7 @@ let currentDirectory = null;
 let commandHistory = [];
 let historyIndex = -1;
 
-const directories = ['about', 'projects', 'skills', 'blog', 'contact'];
+const directories = ['about', 'projects', 'skills', 'blogs', 'contact'];
 const files = ['resume.pdf'];
 
 const directories_data = {
@@ -15,20 +15,20 @@ const directories_data = {
 <br>
 I'm currently building AP Connect with aluplast India — a cross-platform Flutter app that replaced WhatsApp-based sales workflows for their national sales network. As the sole developer, I worked on: SMS OTP auth, role-based dashboards for a three-tier sales hierarchy, a Firebase backend with Firestore security rules, and a data pipeline processing daily reports with 98% reliability.<br>
 <br>
-I'm seeking full-time software engineering roles where I can keep solving hard problems and learn from experienced engineers.
+I'm seeking software engineering roles or projects where I can keep solving hard problems and learn from experienced engineers.
         `
     },
     projects: {
         title: 'Projects',
         content: `
-    <a href="https://github.com/meenakship3/ap-connect" style="text-decoration: none;">
+    <a href="https://github.com/meenakship3/ap-connect" style="text-decoration: none;" target="_blank">
         <div class="project-item">
         <div class="title">AP Connect</div>
         <div class="desc">Cross-platform mobile app for aluplast India's sales and fabricator network.</div>
         <div class="tech">Tech: Flutter • Firebase • Riverpod • Jira </div>
         </div>
     </a>
-<a href="https://github.com/meenakship3/cli-speedtest" style="text-decoration: none;">
+<a href="https://github.com/meenakship3/cli-speedtest" style="text-decoration: none;" target="_blank">
     <div class="project-item">
     <div class="title">CLI Internet Speed Monitor</div>
     <div class="desc">Network monitoring tool with configurable thresholds and real-time Slack notifications for connectivity drops.</div>
@@ -36,7 +36,7 @@ I'm seeking full-time software engineering roles where I can keep solving hard p
     </div>
 </a>
 
-<a href="https://github.com/meenakship3/safeskin" style="text-decoration: none;">
+<a href="https://github.com/meenakship3/safeskin" style="text-decoration: none;" target="_blank">
     <div class="project-item">
     <div class="title">Safeskin</div>
     <div class="desc">Skincare product safety analyzer with database of 2,000+ products that identifies harmful ingredients in cosmetics.</div>
@@ -44,7 +44,7 @@ I'm seeking full-time software engineering roles where I can keep solving hard p
     </div>
 </a>
 
-<a href="https://github.com/meenakship3/lockbox" style="text-decoration: none;">
+<a href="https://github.com/meenakship3/lockbox" style="text-decoration: none;" target="_blank">
     <div class="project-item">
     <div class="title">Lockbox</div>
     <div class="desc">Secure desktop application for managing API keys with AES-256-GCM encryption and biometric authentication.</div>
@@ -52,7 +52,7 @@ I'm seeking full-time software engineering roles where I can keep solving hard p
     </div>
 </a>
 
-<a href="https://github.com/meenakship3/readme-agent" style="text-decoration: none;">
+<a href="https://github.com/meenakship3/readme-agent" style="text-decoration: none;" target="_blank">
     <div class="project-item">
     <div class="title">README Agent</div>
     <div class="desc">AI-powered documentation generator that automatically creates comprehensive README files for Python projects using Google Gemini API.</div>
@@ -60,7 +60,7 @@ I'm seeking full-time software engineering roles where I can keep solving hard p
     </div>
 </a>
 
-<a href="https://github.com/meenakship3/shell-python" style="text-decoration: none;">
+<a href="https://github.com/meenakship3/shell-python" style="text-decoration: none;" target="_blank">
     <div class="project-item">
     <div class="title">Python Shell</div>
     <div class="desc">Unix-like shell interpreter with tab completion, command history, and support for built-in and external commands.</div>
@@ -130,9 +130,23 @@ I'm seeking full-time software engineering roles where I can keep solving hard p
         `
     },
     blog: {
-        title: 'Blog',
+        title: 'Blogs',
         content: `
-<a href="https://medium.com/ai-in-plain-english/i-think-i-know-how-to-use-cursor-now-48dc7dc96a7a" style="text-decoration: none;">
+<a href="https://www.linkedin.com/posts/meenakshipradeep_mlforbeginners-machinelearning-learninpublic-share-7340614519209041921-xWFI/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADxfVRsB5LBfwCS9zj7IyutFWGQfDvdqUsg" style="text-decoration: none;" target="_blank">
+    <div class="blog-item">
+    <div class="date">June 17, 2025</div>
+    <div class="title">Meenakshi Learns Machine Learning: Introduction</div>
+    <div class="desc">The first in a series of 10 posts simplifying ML concepts for non-technical audiences.</div>
+    </div>
+</a>
+<a href="https://www.linkedin.com/posts/meenakshipradeep_mlforbeginners-learninpublic-machinelearning-activity-7361267774104518656-pbyP/?utm_source=share&utm_medium=member_desktop&rcm=ACoAADxfVRsB5LBfwCS9zj7IyutFWGQfDvdqUsg" style="text-decoration: none;" target="_blank">
+    <div class="blog-item">
+    <div class="date">August 13, 2025</div>
+    <div class="title">Meenakshi Learns Machine Learning: The Wrap Up</div>
+    <div class="desc">The last in a series of 10 posts simplifying ML concepts for non-technical audiences.</div>
+    </div>
+</a>
+<a href="https://medium.com/ai-in-plain-english/i-think-i-know-how-to-use-cursor-now-48dc7dc96a7a" style="text-decoration: none;" target="_blank">
     <div class="blog-item">
     <div class="date">August 5, 2025</div>
     <div class="title">I Think I Know How to Use Cursor AI Now</div>
@@ -147,8 +161,8 @@ I'm seeking full-time software engineering roles where I can keep solving hard p
 Let's connect! 
 
 <div class="contact-button" style="margin-top: 1rem;">
-<a href="https://www.linkedin.com/in/meenakshipradeep/" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;">LinkedIn</a>
-<a href="https://github.com/meenakship3" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;">GitHub</a>
+<a href="https://www.linkedin.com/in/meenakshipradeep/" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;" target="_blank">LinkedIn</a>
+<a href="https://github.com/meenakship3" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;" target="_blank">GitHub</a>
 <a href="mailto:meenakshi.pradeep1@gmail.com" target="_blank" rel="noopener noreferrer" style="color: #333; text-decoration: none; padding: 0.5rem 1rem; border: 1px solid #999; border-radius: 3px; display: inline-block;">Email</a>
 </div>
 
